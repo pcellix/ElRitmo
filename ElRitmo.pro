@@ -15,13 +15,11 @@ TEMPLATE = app
 SOURCES += main.cpp\
     calendarwidget.cpp \
     partyinfo.cpp \
-    mainwidget.cpp \
     mainwindow.cpp \
-    mainwidget.cpp
+    mainpartywidget.cpp
 
 HEADERS  += mainwindow.h \
     calendarwidget.h \
     partyinfo.h \
-    mainwidget.h \
     mainwindow.cpp \
-    mainwidget.h
+    mainpartywidget.h
