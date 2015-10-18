@@ -6,7 +6,7 @@
 #include <QCalendarWidget>
 #include <QVBoxLayout>
 #include <QWidget>
-
+class RequestHandler;
 class MainPartyWidget : public QWidget
 {
   Q_OBJECT
@@ -19,6 +19,7 @@ private:
   QVBoxLayout* layout_;
   QCalendarWidget* calendar_;
   PartyInfo* party_info_;
+  RequestHandler* request_;
 };
 
 #endif // MAINWIDGET_Hcd

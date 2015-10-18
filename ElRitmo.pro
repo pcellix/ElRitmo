@@ -16,9 +16,9 @@ SOURCES += main.cpp\
     partyinfo.cpp \
     mainpartywidget.cpp \
     mainwindow.cpp \
-    jsonparser.cpp
+    requesthandler.cpp
 
 HEADERS  += mainwindow.h \
     partyinfo.h \
     mainpartywidget.h \
-    jsonparser.h
+    requesthandler.h

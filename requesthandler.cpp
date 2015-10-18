@@ -1,4 +1,4 @@
-#include "jsonparser.h"
+#include "requesthandler.h"
 
 #include <QString>
 #include <QNetworkAccessManager>
@@ -6,10 +6,10 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 
-JsonParser::JsonParser(MainPartyWidget* main_party_widget) :
+RequestHandler::RequestHandler(MainPartyWidget* main_party_widget) :
   main_party_widget_(main_party_widget){
     QNetworkAccessManager* networkManager = new QNetworkAccessManager(this);
-    QUrl url("http://czytowyplata.modernweb.pl");
+    QUrl url("http://elritmo.pl/api.php?date=2015-10-21");
     QNetworkRequest request;
     request.setUrl(url);
 
@@ -17,11 +17,11 @@ JsonParser::JsonParser(MainPartyWidget* main_party_widget) :
     connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(OnResult(QNetworkReply*)));
 }
 
-JsonParser::~JsonParser() {
+RequestHandler::~RequestHandler() {
 
 }
 
-void JsonParser::OnResult(QNetworkReply* reply) {
+void RequestHandler::OnResult(QNetworkReply* reply) {
     qDebug() << "on result";
     if (reply ->error() != QNetworkReply::NoError)
         return;  // ...only in a blog post

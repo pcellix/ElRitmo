@@ -1,5 +1,5 @@
-#ifndef JSONPARSER_H
-#define JSONPARSER_H
+#ifndef REQUESTHANDLER_H
+#define REQUESTHANDLER_H
 
 #include "mainpartywidget.h"
 
@@ -12,11 +12,11 @@ struct SinglePartyInfo {
     QString location;
 };
 
-class JsonParser :  public QObject {
+class RequestHandler :  public QObject {
     Q_OBJECT
 public:
-    JsonParser(MainPartyWidget* main_party_widget);
-    ~JsonParser();
+    RequestHandler(MainPartyWidget* main_party_widget);
+    ~RequestHandler();
     void MakeRequest();
 private:
     MainPartyWidget* main_party_widget_;
@@ -24,4 +24,4 @@ public slots:
   void OnResult(QNetworkReply* reply);
 };
 
-#endif // JSONPARSER_H
+#endif // REQUESTHANDLER_H
