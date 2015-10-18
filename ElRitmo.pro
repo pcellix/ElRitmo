@@ -13,13 +13,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    calendarwidget.cpp \
     partyinfo.cpp \
+    mainpartywidget.cpp \
     mainwindow.cpp \
-    mainpartywidget.cpp
+    jsonparser.cpp
 
 HEADERS  += mainwindow.h \
-    calendarwidget.h \
     partyinfo.h \
-    mainwindow.cpp \
-    mainpartywidget.h
+    mainpartywidget.h \
+    jsonparser.h

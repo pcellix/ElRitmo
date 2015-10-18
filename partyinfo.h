@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QWebView>
 #include <QVBoxLayout>
+
 class PartyInfo : public QWidget
 {
   Q_OBJECT
@@ -21,5 +22,4 @@ signals:
 public slots:
 
 };
-
 #endif // PARTYINFO_H

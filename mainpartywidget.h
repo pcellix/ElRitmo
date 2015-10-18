@@ -1,9 +1,9 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
-#include "calendarwidget.h"
 #include "partyinfo.h"
 
+#include <QCalendarWidget>
 #include <QVBoxLayout>
 #include <QWidget>
 
@@ -12,15 +12,13 @@ class MainPartyWidget : public QWidget
   Q_OBJECT
 public:
   explicit MainPartyWidget(QWidget *parent = 0);
+    void RequestedData();
+public slots:
+  void OnClick();
 private:
   QVBoxLayout* layout_;
-  CalendarWidget* calendar_;
+  QCalendarWidget* calendar_;
   PartyInfo* party_info_;
-
-signals:
-
-public slots:
-
 };
 
 #endif // MAINWIDGET_Hcd

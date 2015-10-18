@@ -10,5 +10,6 @@ PartyInfo::PartyInfo(QWidget *parent) :
   name_->setText("dasas");
   layout_->addWidget(name_);
   layout_->addWidget(date_);
+  this->setLayout(layout_);
  // layout_->addWidget(webview_);
 }
