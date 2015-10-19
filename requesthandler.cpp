@@ -1,4 +1,5 @@
 #include "requesthandler.h"
+#include "mainpartywidget.h"
 
 #include <QString>
 #include <QNetworkAccessManager>

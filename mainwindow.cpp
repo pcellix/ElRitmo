@@ -1,3 +1,4 @@
+#include "partyinfo.h"
 #include "mainwindow.h"
 
 #include "mainpartywidget.h"

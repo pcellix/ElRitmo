@@ -1,6 +1,10 @@
 #include "mainpartywidget.h"
-
+#include "partyinfo.h"
 #include "requesthandler.h"
+
+#include <QDebug>
+#include <QCalendarWidget>
+#include <QVBoxLayout>
 
 MainPartyWidget::MainPartyWidget(QWidget *parent) :
   QWidget(parent),

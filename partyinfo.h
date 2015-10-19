@@ -2,9 +2,9 @@
 #define PARTYINFO_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QWebView>
-#include <QVBoxLayout>
+
+class QLabel;
+class QVBoxLayout;
 
 class PartyInfo : public QWidget
 {
@@ -16,7 +16,6 @@ private:
   QVBoxLayout* layout_;
   QLabel* name_;
   QLabel* date_;
-  QWebView webview_;
 signals:
 
 public slots:

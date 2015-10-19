@@ -1,17 +1,14 @@
 #ifndef REQUESTHANDLER_H
 #define REQUESTHANDLER_H
 
-#include "mainpartywidget.h"
-
 #include <QObject>
-#include <QString>
-#include <QNetworkReply>
 
 struct SinglePartyInfo {
     QString name;
     QString location;
 };
-
+class MainPartyWidget;
+class QNetworkReply;
 class RequestHandler :  public QObject {
     Q_OBJECT
 public:

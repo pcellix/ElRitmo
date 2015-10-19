@@ -1,5 +1,9 @@
 #include "partyinfo.h"
 
+#include <QLabel>
+#include <QWebView>
+#include <QVBoxLayout>
+
 PartyInfo::PartyInfo(QWidget *parent) :
   QWidget(parent),
   layout_(new QVBoxLayout(parent)),

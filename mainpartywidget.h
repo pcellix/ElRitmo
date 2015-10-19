@@ -1,12 +1,13 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
-#include "partyinfo.h"
-
-#include <QCalendarWidget>
-#include <QVBoxLayout>
 #include <QWidget>
+
+class PartyInfo;
 class RequestHandler;
+
+class QCalendarWidget;
+class QVBoxLayout;
 class MainPartyWidget : public QWidget
 {
   Q_OBJECT
