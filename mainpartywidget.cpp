@@ -11,29 +11,22 @@ MainPartyWidget::MainPartyWidget(QWidget *parent) :
   layout_(new QVBoxLayout(this)),
   calendar_(new QCalendarWidget(this)),
   party_info_(new PartyInfo(this)),
-  request_(0)
+  request_(new RequestHandler(this))
 {
   connect(calendar_, SIGNAL(clicked(QDate)), SLOT(OnClick(QDate)));
-  layout_->addWidget(calendar_);
   layout_->addWidget(party_info_);
+  layout_->addWidget(calendar_);
   this->setLayout(layout_);
 }
 
 void MainPartyWidget::OnClick(const QDate& date) {
     qDebug() << "aaaaaa";
-    request_ = new RequestHandler(this, date.toString("yyyy-MM-dd"));
+    request_->MakeRequest(date.toString("yyyy-MM-dd"));
 }
 
 void MainPartyWidget::RequestedData(QVector<SinglePartyInfo>* wektor) {
   qDebug() << "Requested data called " << wektor->at(0).webpage;
-  deleteRequest();
 }
 
-void MainPartyWidget::deleteRequest() {
-  if (request_) {
-    delete request_;
-    request_ = 0;
-  }
-}
 
 

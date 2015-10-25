@@ -9,15 +9,17 @@ struct SinglePartyInfo {
 };
 class MainPartyWidget;
 class QNetworkReply;
+class QNetworkAccessManager;
 class RequestHandler :  public QObject {
     Q_OBJECT
 public:
-    RequestHandler(MainPartyWidget* main_party_widget, const QString &date);
+    RequestHandler(MainPartyWidget* main_party_widget);
     ~RequestHandler();
-    void MakeRequest();
-private:void
-    PrepaeAndSendResult(const QJsonArray array);
+    void MakeRequest(const QString& date);
+private:
+    void PrepareAndSendResult(const QJsonArray array);
     MainPartyWidget* main_party_widget_;
+    QNetworkAccessManager* network_access_manager_;
 public slots:
   void OnResult(QNetworkReply* reply);
 };

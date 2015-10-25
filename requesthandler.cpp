@@ -3,6 +3,7 @@
 
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <QJsonParseError>
 #include <QJsonObject>
 #include <QString>
 #include <QNetworkAccessManager>
@@ -10,18 +11,19 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 
-RequestHandler::RequestHandler(MainPartyWidget* main_party_widget,
-                               const QString& date) :
-  main_party_widget_(main_party_widget){
-    QNetworkAccessManager* networkManager = new QNetworkAccessManager(this);
+RequestHandler::RequestHandler(MainPartyWidget* main_party_widget) :
+  main_party_widget_(main_party_widget) {
+    network_access_manager_ = new QNetworkAccessManager(this);
+    connect(network_access_manager_, SIGNAL(finished(QNetworkReply*)), this,
+            SLOT(OnResult(QNetworkReply*)));
+}
+
+void RequestHandler::MakeRequest(const QString& date) {
     QUrl url("http://elritmo.pl/api.php?date=" + date);
     qDebug() << url.toString();
     QNetworkRequest request;
     request.setUrl(url);
-
-    QNetworkReply* currentReply = networkManager->get(request);  // GET
-    connect(networkManager, SIGNAL(finished(QNetworkReply*)), this,
-            SLOT(OnResult(QNetworkReply*)));
+    network_access_manager_->get(request);
 }
 
 RequestHandler::~RequestHandler() {
@@ -29,19 +31,18 @@ RequestHandler::~RequestHandler() {
 
 void RequestHandler::OnResult(QNetworkReply* reply) {
     qDebug() << "on result" << reply->readAll();
-
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     QJsonObject jsonObject = jsonDocument.object();
-    QJsonArray array= jsonObject["results"].toArray();
+    QString status("status");
+    status.toUtf8();
+    QJsonArray array = jsonObject["results"].toArray();
     if (array.isEmpty()) {
-      main_party_widget_->deleteRequest();
       return;
     }
-    PrepaeAndSendResult(array);
-    qDebug() << "json " ;
+    PrepareAndSendResult(array);
 }
 
-void RequestHandler::PrepaeAndSendResult(const QJsonArray array) {
+void RequestHandler::PrepareAndSendResult(const QJsonArray array) {
   QVector<SinglePartyInfo>* party_infos = new QVector<SinglePartyInfo>();
   for (int i = 0; i < array.count(); ++i) {
     QJsonObject temp_object = array[i].toObject();
