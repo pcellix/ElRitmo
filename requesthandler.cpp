@@ -30,11 +30,13 @@ RequestHandler::~RequestHandler() {
 }
 
 void RequestHandler::OnResult(QNetworkReply* reply) {
-    qDebug() << "on result" << reply->readAll();
+    QJsonParseError error;
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    // TODO Error handling
     QJsonObject jsonObject = jsonDocument.object();
-    QString status("status");
-    status.toUtf8();
+    QString status_string(jsonObject["status"].toString());
+    if (status_string != "success")
+      return;
     QJsonArray array = jsonObject["results"].toArray();
     if (array.isEmpty()) {
       return;
