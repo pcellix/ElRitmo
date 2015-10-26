@@ -23,7 +23,7 @@ private:
   QCalendarWidget* calendar_;
   QVBoxLayout* party_info_layout_;
   RequestHandler* request_;
-  QMap<QString, QWidget*> map;
+  QMap<QString, PartyInfo*> map;
 };
 
 #endif // MAINWIDGET_Hcd

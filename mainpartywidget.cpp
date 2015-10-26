@@ -25,11 +25,6 @@ void MainPartyWidget::OnClick(const QDate& date) {
 }
 
 void MainPartyWidget::RequestedData(QVector<SinglePartyInfo>* wektor) {
-  foreach (SinglePartyInfo single_party, *wektor) {
-      party_info_layout_->addWidget(new PartyInfo(single_party, this));
-      delete wektor;
-  }
+      map.insert("2015-10-25", new PartyInfo(wektor));
+      party_info_layout_->addWidget(map["2015-10-25"]);
 }
-
-
-

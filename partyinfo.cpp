@@ -6,13 +6,14 @@
 #include <QVBoxLayout>
 
 
-PartyInfo::PartyInfo(const SinglePartyInfo& single_party, QWidget *parent) :
-  QWidget(parent),
-  webpage(new QLabel(this))
+PartyInfo::PartyInfo(QVector<SinglePartyInfo>* singiel_parties, QWidget *parent) :
+  QWidget(parent)
 {
   QVBoxLayout* layout = new QVBoxLayout(this);
   this->setLayout(layout);
-  webpage->setText(single_party.webpage);
-  this->layout()->addWidget(webpage);
-//  this->layout()->removeWidget(webpage);
+  foreach (SinglePartyInfo single_party, *singiel_parties) {
+      QLabel *webpage = new QLabel(this);
+      webpage->setText(single_party.webpage);
+      this->layout()->addWidget(webpage);
+  }
 }

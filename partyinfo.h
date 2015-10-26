@@ -8,7 +8,7 @@ struct PartyInfo : public QWidget
 {
   Q_OBJECT
  public:
-  explicit PartyInfo(const SinglePartyInfo& singiel_party,
+  explicit PartyInfo(QVector<SinglePartyInfo> *singiel_parties,
             QWidget *parent = 0);
   QLabel* webpage;
 
