@@ -1,6 +1,7 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
+#include <QMap>
 #include <QWidget>
 #include <QVector>
 class PartyInfo;
@@ -14,15 +15,15 @@ class MainPartyWidget : public QWidget
 public:
   explicit MainPartyWidget(QWidget *parent = 0);
     void RequestedData(QVector<SinglePartyInfo>*);
-    void deleteRequest();
 
 public slots:
   void OnClick(const QDate &date);
 private:
   QVBoxLayout* layout_;
   QCalendarWidget* calendar_;
-  PartyInfo* party_info_;
+  QVBoxLayout* party_info_layout_;
   RequestHandler* request_;
+  QMap<QString, QWidget*> map;
 };
 
 #endif // MAINWIDGET_Hcd

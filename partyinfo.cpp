@@ -1,19 +1,18 @@
 #include "partyinfo.h"
+#include "requesthandler.h"
 
 #include <QLabel>
 #include <QWebView>
 #include <QVBoxLayout>
 
-PartyInfo::PartyInfo(QWidget *parent) :
+
+PartyInfo::PartyInfo(const SinglePartyInfo& single_party, QWidget *parent) :
   QWidget(parent),
-  layout_(new QVBoxLayout(parent)),
-  name_(new QLabel(this)),
-  date_(new QLabel(this))
- // webview_(new QWebView(this))
+  webpage(new QLabel(this))
 {
-  name_->setText("dasas");
-  layout_->addWidget(name_);
-  layout_->addWidget(date_);
-  this->setLayout(layout_);
- // layout_->addWidget(webview_);
+  QVBoxLayout* layout = new QVBoxLayout(this);
+  this->setLayout(layout);
+  webpage->setText(single_party.webpage);
+  this->layout()->addWidget(webpage);
+//  this->layout()->removeWidget(webpage);
 }
